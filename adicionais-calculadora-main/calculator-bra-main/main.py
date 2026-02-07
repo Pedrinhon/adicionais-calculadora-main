@@ -57,7 +57,14 @@ def submit_form():
     address = request.form['address']
     date = request.form['date']
 
-    # Aqui você pode salvar os dados ou enviá-los por email
+    # Salvar os dados em um arquivo
+    with open('form.txt', 'a', encoding='utf-8') as f:
+        f.write(f"Nome: {name}\n")
+        f.write(f"Email: {email}\n")
+        f.write(f"Endereço: {address}\n")
+        f.write(f"Data: {date}\n")
+        f.write("-" * 50 + "\n")
+
     return render_template('form_result.html', 
                            name=name,
                            email=email,
